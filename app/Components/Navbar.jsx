@@ -1,6 +1,6 @@
-import Image from "next/image";
-import { FiSearch, FiBell, FiSun, FiMoon } from "react-icons/fi";
-import theme from "../../img/theme.png"
+import { FiSearch, FiBell } from "react-icons/fi";
+import ThemeDropdown from "./ThemeDropdown";
+import Avatar from "./Avatar";
 
 
 export default function Navbar() {
@@ -21,11 +21,9 @@ export default function Navbar() {
 
       {/* RIGHT: Icons */}
       <div className="flex items-center gap-5">
-        <Image src={theme} alt="Theme icon" width={24} height={24} />
+        <ThemeDropdown />
         <FiBell size={18} className="text-muted" />
-        <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center">
-          <span className="text-xs text-bg">M</span>
-        </div>
+        <Avatar />
       </div>
 
     </div>

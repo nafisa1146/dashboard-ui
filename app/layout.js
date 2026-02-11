@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Sidebar from "./Components/Sidebar";
 import Navbar from "./Components/Navbar";
+import { ThemeProvider } from "./Providers/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,28 +25,30 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="flex h-screen">
+        <ThemeProvider>
+          <div className="flex h-screen">
 
-          {/* Sidebar */}
-          <aside className="w-56 bg-surface text-primary fixed left-0 top-0 h-full">
-            <Sidebar />
-          </aside>
+            {/* Sidebar */}
+            <aside className="w-56 bg-surface text-primary fixed left-0 top-0 h-full">
+              <Sidebar />
+            </aside>
 
-          {/* Right side (Navbar + Content) */}
-          <div className="flex flex-col flex-1 ml-56">
+            {/* Right side (Navbar + Content) */}
+            <div className="flex flex-col flex-1 ml-56">
 
-            {/* Navbar */}
-            <header className="h-16 bg-surface shadow flex items-center px-6 sticky top-0 z-10">
-              <Navbar />
-            </header>
+              {/* Navbar */}
+              <header className="h-16 bg-surface border border-border shadow flex items-center px-6 sticky top-0 z-10">
+                <Navbar />
+              </header>
 
-            {/* Main content */}
-            <main className="flex-1 overflow-y-auto bg-surface p-6">
-              {children}
-            </main>
+              {/* Main content */}
+              <main className="flex-1 overflow-y-auto bg-surface p-6">
+                {children}
+              </main>
 
+            </div>
           </div>
-        </div>
+        </ThemeProvider>
       </body>
     </html>
   );
